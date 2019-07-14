@@ -32,11 +32,14 @@ try{
         print $rec['name'];
         print '<br/>';   
     }
+    print '<input type="submit" name="disp" value="参照">';
+    print '<input type="submit" name="add" value="追加">';
     print '<input type="submit" name="edit" value="修正">';//name属性 editを追加
     print '<input type="submit" name="delete" value="削除">';//追加
     print '</form>';
 }catch(Exception $e){
         print 'ただいま障害により大変ご迷惑をお掛けしております。';
+        print $e;
         exit();
 }
 

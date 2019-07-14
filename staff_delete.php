@@ -31,22 +31,27 @@
     }
 ?>
 
-スタッフ修正<br/>
+スタッフ削除<br/>
 <br/>
 <?php print $staff_code;?>
 <br/>
-<br/>
-<form method="post" action="staff_edit_check.php">
-<input type="hidden" name="code" value="<?php print $staff_code;?>">
 スタッフ名<br/>
+<?php print $staff_name;?>
+<br/>
+このスタッフを削除してよろしいですか?<br/>
+<br/>
+<form method="post" action="staff_delete_done.php">
+<input type="hidden" name="code" value="<?php print $staff_code;?>">
+<!-- スタッフ名<br/>
 <input type="text" name="name" style="width:200px" value="<?php print $staff_name;?>"><br/>
 パスワードを入力して下さい。<br/>
 <input type="password" name="pass" style="width:100px"><br/>
 パスワードをもう一度入力して下さい。<br/>
-<input type="password" name="pass2" style="width:100px"><br/>
+<input type="password" name="pass2" style="width:100px">
+<br/> -->
 <input type="button" onclick="history.back()" value="戻る">
 <input type="submit" value="OK">
-</form>
+
 </body>
 
 </html>
