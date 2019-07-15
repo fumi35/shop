@@ -33,7 +33,7 @@ if(isset($_POST['edit'])==true){
 }
 
 if(isset($_POST['delete'])==true){
-    $pro_code=$POST['procode'];
+    $pro_code=$_POST['procode'];
     header('Location:pro_delete.php?procode='.$pro_code);
     exit();
 }

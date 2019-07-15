@@ -10,6 +10,7 @@
 
 try{
     $pro_code = $_POST['code'];
+    $pro_gazou_name = $_POST['gazou_name'];
     // $pro_name = $_POST['name'];
     // $pro_pass = $_POST['pass'];
 
@@ -29,6 +30,10 @@ try{
     $stmt->execute($data);
 
     $dbh = null;
+
+    if($pro_gazou_name != ''){
+        unlink('./gazou/'.$pro_gazou_name);
+    }
 
     // print $pro_name;
     // print 'さんを追加しました。</br>';
