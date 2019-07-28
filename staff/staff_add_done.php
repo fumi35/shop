@@ -21,12 +21,15 @@
 
 <?php
 
-try{
-    $staff_name = $_POST['name'];
-    $staff_pass = $_POST['pass'];
+require_once('../common/common.php');
+$post=sanitize($_POST);
 
-    $staff_name = htmlspecialchars($staff_name,ENT_QUOTES,'UTF-8');
-    $staff_pass = htmlspecialchars($staff_pass,ENT_QUOTES,'UTF-8');
+try{
+    $staff_name = $post['name'];
+    $staff_pass = $post['pass'];
+
+    // $staff_name = htmlspecialchars($staff_name,ENT_QUOTES,'UTF-8');
+    // $staff_pass = htmlspecialchars($staff_pass,ENT_QUOTES,'UTF-8');
 
     $dsn = 'mysql:dbname=shop;host=localhost;charset=utf8';
     $user = 'root';
