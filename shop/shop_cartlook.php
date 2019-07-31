@@ -1,13 +1,15 @@
 <?php
     session_start();
     session_regenerate_id(true);
-    if(isset($_SESSION['login'])==false){
-        print 'ログインされていません<br/>';
-        print '<a href="../staff_login/staff_login.html">ログイン画面へ</a>';
-        exit();
+    if(isset($_SESSION['member_login'])==false){
+        print 'ようこそゲスト様 ';
+        print '<a href="member_login.html">会員ログイン</a></br>';
+        print '<br/>';
     }else{
-        print $_SESSION['staff_name'];
-        print 'さんログイン中<br/>';
+        print 'ようこそ';
+        print ＄_SESSION['member_name'];
+        print '様 ';
+        print '<a href="member_logout.php">ログアウト</a><br/>';
         print '<br/>';
     }
 ?>
@@ -37,43 +39,50 @@
         $rec = $stmt->fetch(PDO::FETCH_ASSOC);
         $pro_name=$rec['name'];
         $pro_price=$rec['price'];
-        $pro_gazou_name_old=$rec['gazou'];
+        $pro_gazou_name=$rec['gazou'];
+
         $dbh = null;
 
-        if($pro_gazou_name_old==''){
+        if($pro_gazou_name==''){
             $disp_gazou='';
         }else{
-            $disp_gazou='<img src="./gazou/'.$pro_gazou_name_old.'">';
+            $disp_gazou='<img src="../product/gazou/'.$pro_gazou_name.'">';
         }
+
+        print '<a href="shop_cartin.php?procode='.$pro_code.'">カートに入れる</a><br/><br/>';
+
     }catch(Exception $e){
         print 'ただいま障害により大変ご迷惑をお掛けしております。';
         exit();
     }
 ?>
 
-商品修正<br/>
+商品情報参照<br/>
 <br/>
+商品コード<br/>
 <?php print $pro_code;?>
 <br/>
+商品名<br/>
+<?php print $pro_name;?>
 <br/>
-<form method="post" action="pro_edit_check.php" enctype="multipart/form-data">
+価格<br/>
+<?php print $pro_price;?>円
+<br/>
+<br/>
+<?php print $disp_gazou;?>
+<br/>
+<br/>
+<form>
+<!-- <form method="post" action="pro_edit_check.php">
 <input type="hidden" name="code" value="<?php print $pro_code;?>">
-<input type="hidden" name="gazou_name_old" value="<?php print $pro_gazou_name_old;?>">
 商品名<br/>
 <input type="text" name="name" style="width:200px" value="<?php print $pro_name;?>"><br/>
-価格<br/>
-<input type="text" name="price" style="width:50px" value="<?php print $pro_price;?>">円<br/>
-<!-- パスワードを入力して下さい。<br/>
+パスワードを入力して下さい。<br/>
 <input type="password" name="pass" style="width:100px"><br/>
 パスワードをもう一度入力して下さい。<br/>
 <input type="password" name="pass2" style="width:100px"><br/> -->
-<?php print $disp_gazou; ?>
-<br/>
-画像を選んでください。<br/>
-<input type="file" name="gazou" style="width:400px"><br/>
-<br/>
 <input type="button" onclick="history.back()" value="戻る">
-<input type="submit" value="OK">
+<!-- <input type="submit" value="OK"> -->
 </form>
 </body>
 

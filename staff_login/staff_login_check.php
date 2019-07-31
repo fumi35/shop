@@ -5,8 +5,14 @@ $post=sanitize($_POST);
 
 try{
 
+    var_dump($post['code']);
+    var_dump($post['pass']);
+
     $staff_code=$post['code'];
     $staff_pass=$post['pass'];
+
+    var_dump($post['$staff_code']);
+    var_dump($post['$staff_pass']);
 
     // $staff_code=htmlspecialchars($staff_code,ENT_QUOTES,'UTF-8');
     // $staff_pass=htmlspecialchars($staff_pass,ENT_QUOTES,'UTF-8');
